@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { createUser } from '../services/user';
 
 const Register = () => {
-  const [errorMessage, setErrorMessage] = useState('');
+  // const [errorMessage, setErrorMessage] = useState('');
   const {
     register,
     formState: { errors },
