@@ -10,3 +10,11 @@ export const createUser = async (request) => {
     return error.response.statusText;
   }
 };
+
+// createUser({
+//   name: 'Yanella',
+//   email: 'yan@gmail.com',
+//   password: 'holaKhace',
+// })
+//   .then((res) => console.log(res))
+//   .catch((err) => console.log(err));
