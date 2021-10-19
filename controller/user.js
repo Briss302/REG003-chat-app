@@ -29,9 +29,7 @@ module.exports = {
       return resp.status(200).json(newUser);
     } catch (error) {
       if (error.code === 'P2002') {
-        return resp
-          .status(403)
-          .json({ message: 'Forbidden, email already exists' });
+        return resp.status(403).json({ message: 'Email already exists' });
       }
       return resp.status(500).json({
         message: 'Internal server error',
