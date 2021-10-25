@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { createUser } from '../services/user';
 
-const Register = () => {
+const Register = ({change}) => {
   // const [errorMessage, setErrorMessage] = useState('');
   const {
     register,
@@ -25,17 +25,16 @@ const Register = () => {
 
   return (
     <>
-      <div className="max-w-md w-full mx-auto mt-4 bg-white p-8 border border-gray-300">
-        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex flex-col space-y-8 mt-10" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <label
-              className="text-sm font-bold text-gray-600 block"
+              className="font-bold text-lg text-white"
               htmlFor="inputName"
             >
               Name
             </label>
             <input
-              className="w-full p-2 border border-gray-300 rounded mt-1"
+              className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"
               id="inputName"
               name="name"
               {...register('name', {
@@ -52,20 +51,21 @@ const Register = () => {
                   message: 'No es nombre válido',
                 },
               })}
-            />
+          />
+          <br />
             <span style={{ color: 'red', fontSize: '12px' }}>
               {errors.name && errors.name.message}
             </span>
           </div>
           <div>
             <label
-              className="text-sm font-bold text-gray-600 block"
+              className="font-bold text-lg text-white"
               htmlFor="inputEmail"
             >
               Email
-            </label>
+            </label> <br />
             <input
-              className="w-full p-2 border border-gray-300 rounded mt-1"
+              className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white"
               id="inputEmail"
               name="email"
               {...register('email', {
@@ -78,20 +78,21 @@ const Register = () => {
                   message: 'No es un email válido',
                 },
               })}
-            />
+          />
+          <br />
             <span style={{ color: 'red', fontSize: '12px' }}>
               {errors.email && errors.email.message}
             </span>
           </div>
           <div>
             <label
-              className="text-sm font-bold text-gray-600 block"
+              className="font-bold text-lg text-white"
               htmlFor="inputPassword"
             >
               Password
             </label>
             <input
-              className="w-full p-2 border border-gray-300 rounded mt-1"
+              className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white"
               id="inputPassword"
               name="password"
               type="password"
@@ -105,18 +106,20 @@ const Register = () => {
                   message: 'password débil',
                 },
               })}
-            />
+          />
+          <br />
             <span style={{ color: 'red', fontSize: '12px' }}>
               {errors.password && errors.password.message}
             </span>
           </div>
           <input
-            className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-ad text-white text-sm"
+            className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold"
             type="submit"
             value="Registrarse"
           />
-        </form>
-      </div>
+      </form>
+      <p className="font-bold text-lg text-white mt-4">¿ Ya tienes cuenta ? </p>
+      <button className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold" onClick={() => change("Login")}>Ingresar</button>
     </>
   );
 };
