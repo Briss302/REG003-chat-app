@@ -7,10 +7,6 @@ import Register from '../components/Register';
 export default function Home() {
   const [form, setForm] = useState('Login');
 
-  const user = cookie.get('token');
-
-  console.log('soy el token', user);
-
   const switchForm =
     form === 'Login' ? (
       <Login change={setForm}></Login>
