@@ -1,4 +1,5 @@
 // import styles from '../styles/Home.module.css';
+import cookie from 'js-cookie';
 import { useState } from 'react';
 import Login from '../components/Login';
 import Register from '../components/Register';
@@ -6,10 +7,10 @@ import Register from '../components/Register';
 export default function Home() {
 
   const [form, setForm] = useState("Login");
-
-  const changeForm = () => {
-    setForm("Register")
-  }
+  
+  const user = cookie.get("token");
+  
+  console.log("soy el token",user);
 
   const switchForm = form === "Login" ? <Login change={setForm}></Login> : <Register change={setForm}></Register>;
 

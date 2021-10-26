@@ -25,8 +25,7 @@ const Register = ({change}) => {
 
   return (
     <>
-        <form className="flex flex-col space-y-8 mt-10" onSubmit={handleSubmit(onSubmit)}>
-          <div>
+        <form className="flex flex-col mt-10" onSubmit={handleSubmit(onSubmit)}>
             <label
               className="font-bold text-lg text-white"
               htmlFor="inputName"
@@ -34,7 +33,7 @@ const Register = ({change}) => {
               Name
             </label>
             <input
-              className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"
+              className="border rounded-lg py-3 px-3 mt-4 bg-black border-yellow-500 placeholder-white-500 text-white"
               id="inputName"
               name="name"
               {...register('name', {
@@ -56,8 +55,8 @@ const Register = ({change}) => {
             <span style={{ color: 'red', fontSize: '12px' }}>
               {errors.name && errors.name.message}
             </span>
-          </div>
-          <div>
+          
+          
             <label
               className="font-bold text-lg text-white"
               htmlFor="inputEmail"
@@ -65,7 +64,7 @@ const Register = ({change}) => {
               Email
             </label> <br />
             <input
-              className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white"
+              className="border rounded-lg py-3 px-3 bg-black border-yellow-500 placeholder-white-500 text-white"
               id="inputEmail"
               name="email"
               {...register('email', {
@@ -83,16 +82,16 @@ const Register = ({change}) => {
             <span style={{ color: 'red', fontSize: '12px' }}>
               {errors.email && errors.email.message}
             </span>
-          </div>
-          <div>
+          
+          
             <label
               className="font-bold text-lg text-white"
               htmlFor="inputPassword"
             >
               Password
-            </label>
+            </label> <br />
             <input
-              className="border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white"
+              className="border rounded-lg py-3 px-3 bg-black border-yellow-500 placeholder-white-500 text-white"
               id="inputPassword"
               name="password"
               type="password"
@@ -111,15 +110,13 @@ const Register = ({change}) => {
             <span style={{ color: 'red', fontSize: '12px' }}>
               {errors.password && errors.password.message}
             </span>
-          </div>
           <input
-            className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold"
+            className="border border-yellow-500 bg-black text-white rounded-lg py-3 font-semibold"
             type="submit"
             value="Registrarse"
           />
       </form>
-      <p className="font-bold text-lg text-white mt-4">¿ Ya tienes cuenta ? </p>
-      <button className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold" onClick={() => change("Login")}>Ingresar</button>
+      <p className="font-bold text-sm text-center text-white mt-4">¿ Ya tienes cuenta ? <span onClick={() => change("Login")} className= "text-yellow-500 cursor-pointer">Ingresa</span></p>
     </>
   );
 };
