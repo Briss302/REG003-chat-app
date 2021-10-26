@@ -1,9 +1,12 @@
 import { useForm } from 'react-hook-form';
 import { authenticateUser } from '../services/auth';
+import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 export default function Login({ change }) {
+  const router = useRouter();
+
   const {
     register,
     formState: { errors },
@@ -13,12 +16,12 @@ export default function Login({ change }) {
   const onSubmit = async (data, e) => {
     try {
       const LoginUser = await authenticateUser(data);
-      cookie.set('token', LoginUser, { expires: 1 / 24 });
-      console.log(LoginUser);
-      // if (submitNewUser !== 'Ok') {
-      //   return alert(submitNewUser);
-      // }
-      // // limpiar campos
+      if (LoginUser === 'Not Found') {
+        alert(LoginUser);
+      } else {
+        cookie.set('token', LoginUser, { expires: 1 / 24 });
+        router.push('/view-two');
+      }
       e.target.reset();
     } catch (error) {
       console.log(error);
@@ -66,16 +69,12 @@ export default function Login({ change }) {
             },
           })}
         />
-
         <span style={{ color: 'red', fontSize: '12px' }}>
           {errors.password && errors.password.message}
         </span>
-
-        <Link href="/view-two">
-          <button className="border border-yellow-500 bg-black text-white rounded-lg py-3 font-semibold">
-            Iniciar sesión
-          </button>
-        </Link>
+        <button className="border border-yellow-500 bg-black text-white rounded-lg py-3 font-semibold">
+          Iniciar sesión
+        </button>
       </form>
       <p className="font-bold text-sm text-center text-white mt-4">
         ¿ No tienes cuenta ?{' '}
