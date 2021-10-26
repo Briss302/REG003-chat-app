@@ -31,7 +31,7 @@ export default function Viewtwo() {
     
       <div className="h-screen flex flex-column bg-gray-900">
         <div className="w-1/4 ">
-        <button onClick={() => logOut()}>Salir</button>
+        <button className="text-white" onClick={() => logOut()}>Salir</button>
         </div>
 
         <div className="w-1/2 flex-row">
