@@ -11,10 +11,9 @@ export const authenticateUser = async (request) => {
   }
 };
 
-
 // authenticateUser({
 //   email: 'yan@gmail.com',
-//   password: 'holaKhace',
+//   password: 'holaKhac',
 // })
 //   .then((res) => console.log(res))
 //   .catch((err) => console.log(err));
