@@ -17,4 +17,24 @@ model User {
   email     String   @unique
   name      String
   password  String
+  messages  Message[]
+  channels  Channel[]   
+}
+
+model Channel {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  author      User[]   @relation(fields: [authorId], references: [id])
+  authorsId   Int
+  messages    Message[]
+}
+
+model Message {
+  id          Int      @id @default(autoincrement())
+  author      User     @relation(fields: [authorId], references: [id])
+  authorId    Int  
+  messageTime DateTime @default(now())     
+  content     String
+  channel     Channel  @relation(fields: [channelId], references: [id])
+  channelId   Int 
 }
